@@ -6,6 +6,8 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import styles from './src/components/Styles'
 import Home from './src/components/Home'
 import SermonsNavBar from './src/components/SermonsNavBar'
+import FBLogo from './src/components/Logo'
+
 
 
 const HomeScreen = ({ navigation }) => {
@@ -30,14 +32,19 @@ const Sermons = () => {
   )
 }
 
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name ='Farnham Baptist Church' component={HomeScreen}/>
-        <Stack.Screen name ='Sermons' component={Sermons} />
+        <Stack.Screen 
+          name='Home' 
+          component={HomeScreen}
+          options={{ headerTitle: (props) => <FBLogo {...props} /> }}
+        />
+        <Stack.Screen name='Sermons' component={Sermons} />
       </Stack.Navigator>
     </NavigationContainer>
     
