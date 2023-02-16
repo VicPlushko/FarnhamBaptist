@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import styles from './src/components/Styles'
 import Home from './src/components/Home'
@@ -33,25 +34,26 @@ const Sermons = () => {
 }
 
 
-const Stack = createNativeStackNavigator();
+// const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator
+      <Tab.Navigator
         screenOptions={{
           headerStyle: {
-            backgroundColor: '#880808',
+            backgroundColor: '#fff',
           }
         }}
       >
-        <Stack.Screen 
+        <Tab.Screen 
           name='Home' 
           component={HomeScreen}
           options={{ headerRight: (props) => <FBLogo {...props} /> }}
         />
-        <Stack.Screen name='Sermons' component={Sermons} />
-      </Stack.Navigator>
+        <Tab.Screen name='Sermons' component={Sermons} />
+      </Tab.Navigator>
     </NavigationContainer>
     
   );
